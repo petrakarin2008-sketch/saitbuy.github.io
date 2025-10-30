@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      body{
+        background-color: #94a9ac;
+        color: black;
+        min-width: 80em;
+      }
+      <!--#808080 #dbd8d8-->
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    :root {
+        --index: calc(1vw + 1vh);
+        --color-header: #f4efec;
+        --color: #021024;
+        --color-darkblue: #052659;
+        --color-lightblue: #5483B3;
+        --color-dirtyblue: #7DA0C4;
+        --color-white: #C1E8FF;
+        --gallery-gap: calc(var(--index) * 7.5)
+    }
+
+   
+    .contener{
+        padding: 2vh 3vw;
+        width: 100%;
+    }
+    section {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        min-height: 95vh; /* или нужная тебе высота */
+       
+    }
+    .carousel::before{
+        width: 700px;
+        height: 500px;
+        content: '';
+        background-image: linear-gradient(322deg, #DC422A, blue);
+        position: absolute;
+        z-index: -1;
+        border-radius: 40% 30% 80% 10%;
+        filter: blur(160px);
+        top: 20%;
+        left: 3%;
+        transform: translate(-10%, -50%);
+        transition: 1s;
+        animation: floatAndSpin 10s ease-in-out infinite alternate;
+    }
+    .carousel::after{
+        width: 400px;
+        height: 300px;
+        content: '';
+        background-image: linear-gradient(80deg, #DC422A, blue);
+        position: absolute;
+        z-index: -1;
+        border-radius: 40% 10% 10% 50%;
+        filter: blur(150px);
+        bottom: -5%;
+        right: 0;
+        transition: 1s;
+        animation: floatAndSpinVersion2 15s ease-in-out infinite alternate;
+    }
+    .carousel{
+        position: relative;
+        height: 800px;
+    }
+
+    
+
+    @keyframes floatAndSpin {
+        0% {
+            transform: translate(-10%, -40%) rotate(0deg);
+        }
+        100% {
+            transform: translateY(-50px) translateX(50px) scale(1.1) 
+        }
+    }
+
+    @keyframes floatAndSpinVersion2 {
+        0% {
+            transform: translate(-10%, -40%) rotate(0deg);
+        }
+        100% {
+            transform: translateY(-10px) translateX(-150px) scale(1) 
+        }
+    }
+
+    @keyframes wiggle{
+        0% {}
+        100% {
+            transform: translateY(-10px)
+        }
+    }
+
+    @keyframes wiggle2{
+        0% {}
+        100% {
+            transform:  translateX(15px) 
+        }
+    }
+
+    .spong{
+        filter: drop-shadow(10px 7px 8px  #181514);
+    }
+
+    .decor {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    }
+    .form-left-decoration, .form-right-decoration {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background: #000000;
+    border-radius: 20px;
+    }
+    .form-left-decoration {
+    bottom: 60px;
+    left: -30px;
+    }
+    .form-right-decoration {
+    top: 60px;
+    right: -30px;
+    }
+    .form-left-decoration:before, .form-left-decoration:after, .form-right-decoration:before, .form-right-decoration:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    border-radius: 30px;
+    background: rgb(0, 0, 0);
+    }
+    .form-left-decoration:before {
+    top: -20px;
+    }
+    .form-left-decoration:after {
+    top: 20px;
+    left: 10px;
+    }
+    .form-right-decoration:before {
+    top: -20px;
+    right: 0;
+    }
+    .form-right-decoration:after {
+    top: 20px;
+    right: 10px;
+    }
+    .circle {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    background: #f3f3f3;
+    }
+    .form-inner {
+        padding: 20px 0;
+        width: 100%;
+    }
+    .form-inner input, .form-inner textarea {
+    display: block;
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    background: #f3f3f3;
+    color: #000000;
+    line-height: 40px;
+    border-width: 0;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    }
+    .form-inner button {
+    margin-top: 10px;
+    background: #67a1dd;
+    border-bottom: 4px solid #367bbc;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    }
+
+    .form-inner textarea {
+    resize: none;
+    }
+
+    .wrapper{
+        background: #f4efec;
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+    }
+
+    .jz{
+        background-image: url(./images/11.jpg);
+        background-size: cover;
+    }
+
+    .jz2{
+        background-image: url(./images/11.jpg);
+        background-size: cover;
+    }
+
+   
+    .jz-blur{
+        background: rgba;
+        backdrop-filter: blur(5px);
+    }
+
+    .jz-blur2{
+        backdrop-filter: blur(15px);
+    }
+   
+    .blureffect{
+        background: #f4efec;
+        backdrop-filter: blur(10px);              
+    }
+
+    .jk{
+        transition: 0.5s;
+        border-bottom: 4px solid black;
+    }
+    .jk:hover{
+        border: transparent !important;
+        
+    }
+
+    .zagul{
+        position: relative;
+        line-height: 4rem;
+        margin-bottom: 3rem;
+    }
+    
+    .zagul::after{
+        top: 85%;
+        left: 65%;
+        content: '';
+        position: absolute;
+        background-color: #ffffff;
+        width: 12rem;
+        border-radius: 50px;
+        height: 3px;
+    }
+
+    .active{
+        height:6rem;
+        transition:height 5s ease-out;
+    }
+
+    .noactive{
+        transform: rotate(180deg);
+    }
+
+    @media screen and (max-width:1023px) {
+        
+        .cartinka{
+            margin-bottom: 3rem;
+        }
+         p{
+            font-size: 1.3em;
+        }
+        .back{
+            padding-top: 5.2rem;
+            font-size: 1.2em;
+        }
+        .glavnp{
+            font-size: 1.4rem;
+        }
+        .cartinkah1{
+             font-size: 1.4rem;
+            font-family: cursive;
+        }
+    }
+
+
+    
+    @media screen and (min-width: 1024px)  {
+        p{
+            font-size: 1.2em;
+        }
+        .tarif{
+            font-size: 3rem;
+        }
+        .tarifh1{
+            font-size: 3rem;
+            font-family: cursive;
+        }
+        .cartinkah1{
+             font-size: 1.3rem;
+            font-family: cursive;
+        }
+        .back{
+            padding-top: 0.5rem;
+        }
+    }
+
+    
+    </style>
+</head>
+<body>
+    <!--rotate3d(1, 1, 1, 45deg); -->
+
+    <div class="contener">
+       
+<!--ГЛАВНАЯ СТРАНИЦА -->
+        <div class="h-[45rem] relative text-[black] overflow-hidden md:h-[50rem] lg:h-[45rem] sm:h-[55rem]">
+            <header style="margin-bottom: 10px;" class="flex w-full text-[1.5rem]  rounded-2xl">
+                
+                <div style="padding: 2rem; margin-right: 1.5rem;" class=" rounded-2xl bg-[#ffff]">logo</div>
+
+                <div style="padding: 2rem;" class="flex justify-between w-full bg-[#ffff] rounded-r-4xl rounded-l-2xl">
+                        <div class="flex items-center">
+                        <div>MICACHU</div>
+                    </div>
+                    <div style="margin-right: 2rem;" class="flex gap-[1rem] items-center ">
+                        <div>Блог</div>
+                        <div>Услуги</div>
+                        <div>Начать проект</div>
+                        
+                    </div>
+                </div>
+                
+            </header>
+
+
+            <div style="padding-left: 6rem; margin-top: 1.5rem;  padding-top: 33.5rem;" class="h-full w-[57rem] text-[1.2em] rounded-2xl bg-[#ffff] relative z-5 ">
+                <p class="back">Создаем совремменые сайты для вашего бизнеса под ключ.</p>
+            </div>
+
+            <div style="" class="h-[87.3%] w-[48rem] bg-[#ffff] absolute right-[0%] top-[10%] overflow-hidden h-full">
+
+
+                <!--<img class="absolute " src="./images/Слой 3.png" alt="">
+                <img class=" spong z-20 w-[65%] absolute bottom-[0%] left-[35%]" src="./images/spong.png" alt="">-->
+                <div style="transform: rotate(304deg);" class="absolute top-[-3rem] right-[10%] h-[28rem] rounded-[5rem] w-[5rem] bg-[#94a9ac] shadow-[1px_5px_11px_#312f2f] sm:top-[-2rem]">10</div>
+
+                <div style="transform: rotate(304deg);" class="absolute top-[6rem] right-[10%] h-[25rem] rounded-[5rem] w-[5rem] bg-[#94a9ac] shadow-[1px_5px_11px_#312f2f] sm:top-[8rem]">1</div>
+
+                <div style="transform: rotate(304deg);" class="absolute top-[20rem] right-[13%] h-[25rem] rounded-[5rem] w-[5rem] bg-[#94a9ac] shadow-[1px_5px_11px_#312f2f] md:h-[26rem] md:right-[10%] sm:top-[24rem]">2</div>
+
+                
+                <div style="transform: rotate(304deg);" class="absolute top-[-1rem] right-[1%] h-[15rem] rounded-[5rem] w-[5rem] bg-[#94a9ac] shadow-[1px_5px_11px_#312f2f]">5</div>
+
+                <div style="transform: rotate(304deg);" class="absolute top-[0.5rem] right-[25%] h-[41rem] rounded-[5rem] w-[5rem] bg-[#94a9ac] shadow-[1px_5px_11px_#312f2f] sm:top-[3.5rem]">6</div>
+
+                <div style="transform: rotate(304deg);" class="absolute top-[20.5rem] right-[27%] h-[30rem] rounded-[5rem] w-[5rem] bg-[#94a9ac] shadow-[1px_5px_11px_#312f2f] z-6 md:h-[33rem] md:right-[22%] sm:top-[25.5rem] sm:h-[34rem] sm:right-[19%]">8</div>
+                
+
+                <div style="transform: rotate(304deg);" class="absolute top-[30rem] right-[36%] h-[20rem] rounded-[5rem] w-[5rem] bg-[#94a9ac] shadow-[1px_5px_11px_#312f2f] z-6 md:top-[36rem] md:h-[24rem] md:right-[31%] sm:h-[23rem] sm:right-[16%] sm:top-[40rem]">3</div>
+            </div>
+
+            <div style="margin-left: 3rem;   padding: 2.5rem; " class="rounded-4xl h-[78%] w-[65em] absolute top-[11.5%] z-10 flex jz">
+
+                <div class="h-full w-full absolute jz-blur top-[0] left-[0] rounded-4xl shadow-[1px_6px_15px_6px_#7c7c7c]"></div>
+
+                <div style="margin-right: 2rem;" class="w-[80%] z-12 ">
+                    <p>От идеи до запуска за  7 дней</p>
+                    <h1 class=" zagul text-6xl uppercase">создаем сайты которые работают</h1>
+
+                    <p style="margin-bottom: 2rem; " class="text-[1.2em]  rounded-2xl font-semibold glavnp">Совремменые веб-решения для вашего бизнеса. Разрабатываем удобные,современные и эффективные сайты, которые работают на вас 24/7. Привлекайте клиентов с помощью продающего сайта </p>
+
+                    <button style="padding: 1rem 1.5rem ; background: linear-gradient(140deg,  #94a9ac 30%, #fefbed 95%);" class="rounded-xl w-[12rem] shadow-[0px_3px_3px_0px_#3c3434] text-[1.2em] sm:text-[1.4em] sm:w-[13rem]">Начать работу</button>
+                </div>
+
+                <div class="w-[50%] sm:w-[34em] flex relative">
+                    <!--<div style="background: linear-gradient(270deg,  #bbcbef 35%, #ecf1fd 95%);" class="w-[30%] bg-[#3e3d3d] rounded-4xl shadow-[10px_5px_13px_0px_#292222]"></div>-->
+
+                    <div style="margin-top: 1.2rem;" class="w-[80%] relative">
+                        <div style="text-align: center; padding: 1rem; margin-bottom: 1.5rem; box-shadow: 7px 5px 12px 0px #0101017b;" class="w-full bg-[#0000] rounded-2xl border-1 border-[#dbd8d8] absolute  left-[-5%] jz-blur2">
+                            <h1 class="uppercase text-[1rem] font-bold cartinkah1 text-[#108094]">Под ключ</h1>
+                            <p>Вы получаете готовый к работе сайт. От дизайна до размещения в интернете.
+                            </p>
+                        </div>
+
+                       
+                        <div style="text-align: center; padding: 1rem; margin-bottom: 1.5rem; box-shadow: 0px 5px 12px 0px #0101017b;" class="w-full bg-[#0000] rounded-2xl border-1 border-[#dbd8d8] absolute top-[35%] left-[20%] jz-blur2">
+                            <h1 class="uppercase text-[1rem] font-bold cartinkah1">Скорость и SEO</h1>
+                            <p>Быстрая загрузка и чистая структура. Ваш сайт будет легко находить.
+                            </p>
+                        </div>
+
+                        <div style="text-align: center; padding: 1rem; box-shadow: 0px 5px 12px 0px #0101017b;" class="w-full bg-[#0000] rounded-2xl border-1 border-[#dbd8d8] absolute top-[70%] left-[-4%] jz-blur2">
+                            <h1 class="uppercase text-[1rem] font-bold cartinkah1 text-[#108094]">Сопровождение</h1>
+                            <p>Техническая поддержка после запуска. Мы всегда будем на связи.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+
+            
+
+            <img style="transform: rotate(264deg);" class="absolute bottom-[-1.5%] border-16 rounded-[100%] left-[-1%]  flex justify-center w-[6%] border-[#94a9ac] bg-[#ffff] z-7 sm:w-[7%]" src="./images/free-icon-arrow-14736674.png" alt="">
+                    
+            
+            
+        </div>
+
+        
+        <!--<section class="relative ">
+                
+                    <div class="flex justify-center">
+                        <h1 class="text-[8rem]">text</h1>
+                    </div>
+                    
+                    <div class="flex justify-center items-center text-center h-[5rem]">
+                        <div style="padding: 30px 40px;" class="flex justify-center p-8 border-1">
+                            <div class="flex gap-[1rem]">
+                                <input type="text" placeholder="fhdkfj " class="border-1 border-orange-700">
+                                <input type="text"placeholder="fhdkfj" class="border-1 border-orange-700">
+                                <input type="text"placeholder="fhdkfj" class="border-1 border-orange-700">
+                                <button>send</button>
+                            </div>
+                        </div>
+                    </div>
+                
+
+
+                    <div class="relative flex justify-center borde-1  w-full h-[60vh]">
+                        <div class=" flex justify-center relative w-[580px] items-center">
+                            <img class="w-[85%] h-[85%]" src="./images/компьютер копия 1.png" alt="">
+                            <img class="absolute bottom-[7rem] right-[0] 
+                            animate-[wiggle2_5s_ease-in-out_infinite_alternate]"src="./images/мини экран копия 2.png" alt="">
+                            <img class="w-[160px] absolute top-[5rem] left-[6rem] 
+                            animate-[wiggle2_4s_ease-in-out_infinite_alternate]" src="./images/мини экран.png" alt="">
+                            <div class="ipad">
+                                <img class=" absolute left-[1rem] top-[3rem]
+                            animate-[wiggle_3s_ease-in-out_infinite_alternate]" src="./images/слой 1 копия 2.png" alt="">
+                            </div>
+                            
+                        </div>  
+                    </div>
+            </section>-->
+       
+       
+ <!--КАРТИНКА -->
+        <div style="padding: 1rem 4rem 2rem 5rem; background-size: cover; margin-top: 1.5rem;" class=" flex items-center justify-between ">
+            <div class="w-full h-full">
+                <h1 class="text-[70px] uppercase sm:text-[3.8rem] cartinka">5 шагов к вашему новаму сайту</h1>
+                <main style="margin-top: 1rem;" class="flex">
+                    <div class="flex relative">
+
+                        <!--<img class="w-[50%] absolute z-20 right-[-120%] top-[-25%] spong" src="./images/bob.png" alt="">
+                        
+                        <div style="background-size: cover;" class="h-[35rem] w-[35rem] overflow-hidden bg-[black] relative rounded-2xl">
+                            <img class="absolute bottom-[0%] w-[52%] z-1" src="./images/каритина 2 (1).png" alt="">
+
+                            <img class="absolute bottom-[-4%] left-[-7%] w-[79%]  z-12" src="./images/каритина 2 (2).png" alt="">
+
+                            <img class="absolute bottom-[-3%] left-[-8%] w-[100%] z-12" src="./images/каритина 2 (3).png" alt="">
+
+                            <img class="absolute bottom-[-1%] left-[0%] w-[100%] z-13" src="./images/каритина 2 ().png" alt="">
+
+                            <img style="transform: rotate(180deg);" class="absolute top-[0%] w-[49%] right-[0%] z-1" src="./images/каритина 2 (1).png" alt="">
+
+                            <img style="transform: rotate(180deg);" class="absolute top-[-5%] right-[-1%] w-[67%]  z-12" src="./images/каритина 2 (2).png" alt="">
+
+                             <img class="w-[26rem] absolute right-[10%] top-[12%] opacity-[1] z-0"  src="./images/дом.png" alt="">
+                        </div>-->
+
+                        <div class="w-[26rem] rounded-2xl overflow-hidden">
+
+                            <div style="transform: rotate(322deg);" class="absolute w-[12rem] left-[3.5rem] h-[3rem] bg-[#94a9ac] top-[0rem] rounded-4xl"></div>
+                            <div style="transform: rotate(322deg);" class="absolute w-[9rem] h-[3rem] bg-[#94a9ac] left-[-4rem] top-[2.5rem]  rounded-4xl"></div>
+                            
+                            <img class="w-full" src="./images/12.jpg" alt="">
+                           
+                        </div>
+                        
+                        
+                    </div>
+                    <div style="margin-left: 2rem; margin-top: 1rem;" class="  rounded-2xl  w-full">
+
+                       <div  style="max-height: 100%; padding: 1rem; margin-bottom: 0.5em;" class="flex justify-between bg-[#ffff] rounded-2xl overflow-hidden active ">
+                        <div  class="flex  flex-col w-full ">
+                            <div class="text-[1.5em] font-bold">0<span class="text-[#00a8ff]">1</span></div>
+                            <div><h1 class="uppercase text-[20px] font-medium">Заявка и бриф</h1></div>
+                            <div  style="margin-top: 1.5rem; padding: 1em; box-shadow: -1px 1px 7px 0px #808080;"  class=" w-full rounded-2xl">
+                                <p>Вы оставляете заявку</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; " class="flex items-center h-[50%] act">
+                            <img class="w-[3rem]" src="./images/стрелка.png" alt="">
+                        </div>
+                            
+                       </div>
+
+                       <div style="max-height: 100%; padding: 1rem; margin-bottom: 0.5em;" class="flex justify-between bg-[#ffff] rounded-2xl overflow-hidden active ">
+                        <div  class="flex  flex-col w-full ">
+                            <div class="text-[1.5em] font-bold">0<span class="text-[#00a8ff]">2</span></div>
+                            <div><h1 class="uppercase text-[20px] font-medium">Прототип и дизайн</h1></div>
+                            <div  style="margin-top: 1.5rem; padding: 1em; box-shadow: -1px 1px 7px 0px #808080;"  class=" w-full rounded-2xl">
+                                <p>Создаем макет будущего сайта</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; " class="flex items-center h-[50%] act">
+                            <img class="w-[3rem]" src="./images/стрелка.png" alt="">
+                        </div>
+                            
+                       </div>
+
+                       
+                       <div style="max-height: 100%; padding: 1rem; margin-bottom: 0.5em;" class="flex justify-between bg-[#ffff] rounded-2xl overflow-hidden active ">
+                        <div  class="flex  flex-col w-full ">
+                            <div class="text-[1.5em] font-bold">0<span class="text-[#00a8ff]">3</span></div>
+                            <div><h1 class="uppercase text-[20px] font-medium">Верстка и программированние</h1></div>
+                            <div  style="margin-top: 1.5rem; padding: 1em; box-shadow: -1px 1px 7px 0px #808080;"  class=" w-full rounded-2xl">
+                                <p>Оживляем дизайн, делаем сайт функциональным</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; " class="flex items-center h-[50%] act">
+                            <img class="w-[3rem]" src="./images/стрелка.png" alt="">
+                        </div>
+                            
+                       </div>
+
+                       <div style="max-height: 100%; padding: 1rem; margin-bottom: 0.5em;" class="flex justify-between bg-[#ffff] rounded-2xl overflow-hidden active ">
+                        <div  class="flex  flex-col w-full ">
+                            <div class="text-[1.5em] font-bold">0<span class="text-[#00a8ff]">4</span></div>
+                            <div><h1 class="uppercase text-[20px] font-medium">Тестирование и запуск</h1></div>
+                            <div  style="margin-top: 1.5rem; padding: 1em; box-shadow: -1px 1px 7px 0px #808080;"  class=" w-full rounded-2xl">
+                                <p>Проверяем все функции и публикуем сайт в интернете</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; " class="flex items-center h-[50%] act">
+                            <img class="w-[3rem]" src="./images/стрелка.png" alt="">
+                        </div>
+                            
+                       </div>
+
+                        
+                       <div style="max-height: 100%; padding: 1rem; margin-bottom: 0.5em;" class="flex justify-between bg-[#ffff] rounded-2xl overflow-hidden active ">
+                        <div  class="flex  flex-col w-full ">
+                            <div class="text-[1.5em] font-bold">0<span class="text-[#00a8ff]">5</span></div>
+                            <div><h1 class="uppercase text-[20px] font-medium">Поддержка</h1></div>
+                            <div  style="margin-top: 1.5rem; padding: 1em; box-shadow: -1px 1px 7px 0px #808080;"  class=" w-full rounded-2xl">
+                                <p>Обучаем вас работе с сайтом и предоставляем сопровождение</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; " class="flex items-center h-[50%] act">
+                            <img class="w-[3rem]" src="./images/стрелка.png" alt="">
+                        </div>
+                            
+                       </div>
+
+                      
+                    </div>
+
+
+                </main>
+
+            </div>
+          
+        </div>
+
+
+
+
+<!--ТАРИФЫ-->
+        <div style="padding: 1.5rem 5rem 3rem 5rem;" class=" flex h-[48rem] ">
+                <div class="flex flex-col w-full">
+                    <div  class="text-center text-[5rem] h-[10%]">
+                        <h1 >Наши услуги</h1>
+                    </div>
+                    <div style="margin-top: 5rem; " class="flex justify-center h-[100%] ">
+                        <div style="padding: 1rem 2rem;" class="w-[380px]  h-full rounded-4xl lureffect flex-col flex drop-shadow-[0px_8px_20px_#666666] jz2 " >
+                            <div class="jz-blur">
+
+                            <div style="background: linear-gradient(178deg,  #94a9ac 30%, #fefbed 95%);" class="flex-col flex text-center bg-[#787878] rounded-2xl drop-shadow-[-1px_15px_20px_#787878] overflow-hidden">
+                                <!--<img class="absolute top-[-12%] opacity-[0.7] left-[-10%] w-[40%]" src="./images/цветок1.png" alt="">-->
+                                
+                                <h1 class="text-[2rem] text-base/10 z-2 tarifh1">Лендинг<br></h1>
+                                    <!--<img class="absolute bottom-[-10%]  right-[-13%] opacity-[0.7] w-[40%]" src="./images/цветок1.png " alt="">-->
+                                <p style="margin-top:40px; padding-bottom: 8px;" class=" z-2 tarif uppercase">350 руб</p>
+                            </div>
+                            
+                            <p style="margin-top: 1.5rem; margin-bottom: 1rem;" class="text-base/6 text-[1.1rem]">Одностраничный сайт для быстрого запуска</p>
+                            <div class="w-full text-lg">
+                                <div class="flex bg-grey-100 items-center">
+                                    <div style="margin-right: 1em;">
+                                        <img class="w-[1.5rem]" src="./images/pngwing.com.png" alt="">
+                                    </div>
+                                    <div>
+                                         <p>Одностраничный сайт</p>
+                                    </div>
+                                   
+                                </div>
+
+                                <div style=" margin-top: 0.5em;" class="flex items-center ">
+                                    <div style="margin-right: 1em;">
+                                        <img class="w-[1.8rem]" src="./images/pngwing.com.png" alt="">
+                                    </div>
+                                    <div>
+                                        <p>Адаптив для телефонов и компьютеров</p>
+                                    </div>
+                                    
+                                </div>
+
+                                <div style=" margin-top: 0.5em;" class="flex items-center ">
+                                    <div style="margin-right: 1em;">
+                                        <img class="w-[1.5rem]" src="./images/pngwing.com.png" alt="">
+                                    </div>
+                                    <div>
+                                        <p>SEO оптимизация</p>
+                                    </div>
+                                    
+                                </div>
+
+                                
+                               <div style=" margin-top: 0.5em;" class="flex items-center ">
+                                    <div style="margin-right: 1em;">
+                                        <img class="w-[1.8rem]" src="./images/pngwing.com.png" alt="">
+                                    </div>
+                                    <div>
+                                        <p>Быстрая разработка и запуск(3-7 дней)</p>
+                                    </div>
+                                    
+                                </div>
+
+                                 <div style=" margin-top: 0.5em;" class="flex items-center ">
+                                    <div style="margin-right: 1em;">
+                                        <img class="w-[2rem]" src="./images/pngwing.com.png" alt="">
+                                    </div>
+                                    <div>
+                                        <p>Запуск рекламной компании(Яндекс.Директ)</p>
+                                    </div>
+                                    
+                                </div>
+                                                             
+                            </div>
+                            
+                            <button style="padding: 10px; margin-top: 1.5rem;" class="bg-[#3c4a58a6] rounded-2xl text-[1.4rem] text-[white] w-[20rem] hover:cursor-pointer jk">Заказать</button>
+                            </div>
+                        </div>
+
+                        <div style="padding: 1rem 2rem; margin-left: 3rem;" class="w-[380px] h-[610px] h-full rounded-4xl lureffect flex-col flex drop-shadow-[0px_8px_20px_#666666] jz2 " >
+                            <div class="jz-blur">
+
+                            <div style="background: linear-gradient(178deg,  #94a9ac 30%, #fefbed 95%);" class="flex-col flex text-center bg-[#787878] rounded-2xl drop-shadow-[-1px_15px_20px_#787878] overflow-hidden">
+                                <!--<img class="absolute top-[-12%] opacity-[0.7] left-[-10%] w-[40%]" src="./images/цветок1.png" alt="">-->
+                                
+                                <h1 class="text-[2rem] text-base/10 z-2 tarifh1">Сайт-Визитка<br></h1>
+                                    <!--<img class="absolute bottom-[-10%]  right-[-13%] opacity-[0.7] w-[40%]" src="./images/цветок1.png " alt="">-->
+                                <p style="margin-top:40px; padding-bottom: 8px;" class="z-2 tarif">550 руб</p>
+                            </div>
+                            
+                            <p style="margin-top: 1.5rem; margin-bottom: 1rem;" class="text-base/6 text-[1.1rem]">Небольшой сайт из нескольких страниц.</p>
+                            <div class="w-full text-lg">
+
+                              
+
+
+                                <div style=" margin-top: 0.5em;" class="flex items-center ">
+                                    <div style="margin-right: 1em;">
+                                        <img class="w-[1.5em]" src="./images/pngwing.com.png" alt="">
+                                    </div>
+                                    <div>
+                                         <p>Интеграции: почта, мессенджеры</p>
+                                    </div>
+                                </div>
+
+
+                                <div style=" margin-top: 0.5em;" class="flex items-center ">
+                                    <div style="margin-right: 1em;">
+                                        <img class="w-[1.4em]" src="./images/pngwing.com.png" alt="">
+                                    </div>
+                                    <div>
+                                         <p>Многостраничный сайт</p>
+                                    </div>
+                                </div>
+
+
+                                <div style=" margin-top: 0.5em;" class="flex items-center ">
+                                    <div style="margin-right: 1em;">
+                                        <img class="w-[1.6em]" src="./images/pngwing.com.png" alt="">
+                                    </div>
+                                    <div>
+                                         <p>Адаптив для телефонов и компьютеров</p>
+                                    </div>
+                                </div>
+
+                                <div style=" margin-top: 0.5em;" class="flex items-center ">
+                                    <div style="margin-right: 1em;">
+                                        <img class="w-[1.3em]" src="./images/pngwing.com.png" alt="">
+                                    </div>
+                                    <div>
+                                         <p>SEO оптимизация</p>
+                                    </div>
+                                </div>
+
+                                 <div style=" margin-top: 0.5em;" class="flex items-center ">
+                                    <div style="margin-right: 1em;">
+                                        <img class="w-[1.8em]" src="./images/pngwing.com.png" alt="">
+                                    </div>
+                                    <div>
+                                         <p>Запуск рекламной компании(Яндекс.Директ)</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                             <button style="padding: 10px; margin-top: 1.4rem;" class="bg-[#3c4a58a6] rounded-2xl text-[1.4rem] text-[white] w-[20rem] hover:cursor-pointer jk">Заказать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+<!--ФОРМА ОТПРАВКИ-->
+        <!--<div style="margin: 2rem 5rem 3rem 5rem; background-size: cover;" class="bg-[url(./images/382346622_db3ea55c-66d7-485a-a410-b7408ff4de52.jpg)] drop-shadow-[-11px_8px_20px_#a89c92] flex h-[26.7rem] rounded-4xl w-[175vh]">
+            <div class="absolute overflow-hidden w-[100%]">
+                <div class="absolute top-[-1%] left-[36%] z-10 h-[47rem] w-[27rem]">
+                    <img class="drop-shadow-[-5px_10px_30px_rgba(19,22,27)] h-full w-full" src="./images/Слой 1.png" alt="">
+                </div>
+       
+           
+                <div class="flex w-[55%] bg-red-100 wrapper relative ">
+                    <div class="w-full flex justify-center">
+                        <form class="decor">
+                        <h3 style="margin-top: 1rem;" class="uppercase text-3xl">Форма связи</h3>
+                            <div class="form-inner">
+                                <input type="text" placeholder="Username">
+                                <input type="phone" placeholder="phone">
+                                <label for="text" >Как связаться?</label>
+                                <select style="margin-bottom: 10px; margin-left: 5px; padding: 10px;" class="text-[#adb4bb]  rounded-[10px] bg-[#fdfeff] w-[40%]" name="cars">
+                                    <option value="volvo">Viber</option>
+                                    <option value="saab">Telegram</option>
+                                    <option value="fiat">whatup</option>
+                                </select>
+                                <textarea placeholder="Сообщение..." rows="3"></textarea>
+                                <button class="hover:cursor-pointer">Отправить</button> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+          
+        </div>-->
+
+
+        <div style="margin-left: 8rem; margin-top: 10rem;" class="flex w-[80%] text-center bg-[#ffff] rounded-4xl justify-between overflow-hidden">
+            <div class="w-[50%] flex justify-center">
+
+                <div class="flex w-full items-center ">
+                    <div class="w-full flex justify-center">
+                        
+                        <form class="decor">
+                        <h3 style="margin-top: 1rem; margin-bottom: 1rem;" class="uppercase text-3xl tarifh1">Форма связи</h3>
+                            <div class="flex justify-center">
+                                <div class="circle">1</div>
+                                <div class="circle">2</div>
+                                <div class="circle">3</div>
+                            </div>
+                        
+                            <div class="form-inner">
+                                <input class="sm:text-[1.3em]" type="text" placeholder="Username">
+                                <input class="sm:text-[1.3em] " type="phone" placeholder="phone">
+                                <div style="margin-bottom: 1rem;" class="flex items-center justify-between ">
+                                    <label class="sm:text-[1.3em] " for="text" >Как связаться?</label>
+                                    <select style="padding: 10px;" class="text-[#797b81]  rounded-[10px] bg-[#f3f3f3] w-[50%]" name="cars">
+                                        <option class="sm:text-[1.3em] " value="volvo">Viber</option>
+                                        <option value="saab">Telegram</option>
+                                        <option value="fiat">whatup</option>
+                                    </select>
+                                </div>
+                                
+                                <textarea class="sm:text-[1.3em] " placeholder="Сообщение..." rows="3"></textarea>
+                                <button class="hover:cursor-pointer text-[1.3rem] ">Отправить</button> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div style="margin:0.5rem 0.5rem 0.5rem 0rem" class="w-[48%] items-center flex justify-center  overflow-hidden" >
+                <img class="w-full h-full rounded-[2rem]" src="./images/13.jpg" alt="">
+            </div>
+        </div>
+
+
+    </div>
+
+    
+    <script src="./main.js"></script>
+</body>
+</html>
